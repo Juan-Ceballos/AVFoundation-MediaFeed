@@ -11,6 +11,7 @@
 		3E173B322444C07B0087FE9F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E173B312444C07B0087FE9F /* HeaderView.swift */; };
 		3E173B342444C4100087FE9F /* MediaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E173B332444C4100087FE9F /* MediaObject.swift */; };
 		3E173B362444EB900087FE9F /* URL+VideoPreviewThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E173B352444EB900087FE9F /* URL+VideoPreviewThumbnail.swift */; };
+		3E173B392446191A0087FE9F /* MediaFeedDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E173B37244619190087FE9F /* MediaFeedDataModel.xcdatamodeld */; };
 		3E3090D82444B9A60061F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3090D72444B9A60061F971 /* AppDelegate.swift */; };
 		3E3090DA2444B9A60061F971 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3090D92444B9A60061F971 /* SceneDelegate.swift */; };
 		3E3090DC2444B9A60061F971 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3090DB2444B9A60061F971 /* MainFeedViewController.swift */; };
@@ -24,6 +25,7 @@
 		3E173B312444C07B0087FE9F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		3E173B332444C4100087FE9F /* MediaObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObject.swift; sourceTree = "<group>"; };
 		3E173B352444EB900087FE9F /* URL+VideoPreviewThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+VideoPreviewThumbnail.swift"; sourceTree = "<group>"; };
+		3E173B382446191A0087FE9F /* MediaFeedDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MediaFeedDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3E3090D42444B9A60061F971 /* AVFoundation-MediaFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AVFoundation-MediaFeed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3090D72444B9A60061F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E3090D92444B9A60061F971 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				3E3090DB2444B9A60061F971 /* MainFeedViewController.swift */,
 				3E173B352444EB900087FE9F /* URL+VideoPreviewThumbnail.swift */,
 				3E173B332444C4100087FE9F /* MediaObject.swift */,
+				3E173B37244619190087FE9F /* MediaFeedDataModel.xcdatamodeld */,
 				3E3090DD2444B9A60061F971 /* Main.storyboard */,
 				3E3090E02444B9AC0061F971 /* Assets.xcassets */,
 				3E3090E22444B9AC0061F971 /* LaunchScreen.storyboard */,
@@ -156,6 +159,7 @@
 				3E3090DC2444B9A60061F971 /* MainFeedViewController.swift in Sources */,
 				3E3090D82444B9A60061F971 /* AppDelegate.swift in Sources */,
 				3E173B302444C04B0087FE9F /* MediaCell.swift in Sources */,
+				3E173B392446191A0087FE9F /* MediaFeedDataModel.xcdatamodeld in Sources */,
 				3E3090DA2444B9A60061F971 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3E173B37244619190087FE9F /* MediaFeedDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3E173B382446191A0087FE9F /* MediaFeedDataModel.xcdatamodel */,
+			);
+			currentVersion = 3E173B382446191A0087FE9F /* MediaFeedDataModel.xcdatamodel */;
+			path = MediaFeedDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3E3090CC2444B9A60061F971 /* Project object */;
 }
