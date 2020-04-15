@@ -12,13 +12,13 @@ class MediaCell: UICollectionViewCell {
     
     @IBOutlet weak var mediaImageView: UIImageView!
     
-    public func configureCell(for mediaObject: MediaObject) {
+    public func configureCell(for mediaObject: CDMediaObject) {
         if let imageData = mediaObject.imageData
         {
             mediaImageView.image = UIImage(data: imageData)
         }
         
-        if let videoURL = mediaObject.videoURL  {
+        if let videoURL = mediaObject.videoData?.convertToURL() {
             let image = videoURL.videoPreviewThumbnail() ?? UIImage(systemName: "heart")
             mediaImageView.image = image
         }

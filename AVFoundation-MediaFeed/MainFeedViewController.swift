@@ -24,7 +24,7 @@ class MainFeedViewController: UIViewController {
         return pickerController
     }()
     
-    private var mediaObjects = [MediaObject]() {
+    private var mediaObjects = [CDMediaObject]() {
         didSet  {
             collectionView.reloadData()
         }
@@ -36,6 +36,14 @@ class MainFeedViewController: UIViewController {
         if !UIImagePickerController.isSourceTypeAvailable(.camera)  {
             videoButton.isEnabled = false
         }
+        fetchMediaObjects()
+    }
+    
+    // NSPredicate
+    // NSFetchResultsController - similar to firebase listener - add automatic collection
+    // reloading of modified data
+    private func fetchMediaObjects()    {
+        mediaObjects = CoreDataManager.shared.fetchMediaObjects()
     }
     
     private func configureCollectionView()  {
@@ -56,8 +64,9 @@ class MainFeedViewController: UIViewController {
     }
     
     private func playRandomVideo(in view: UIView)  {
-        let videoURLs = mediaObjects.compactMap {$0.videoURL}
-            if let videoURL = videoURLs.randomElement() {
+        let videoObjects = mediaObjects.compactMap {$0.videoData}
+            if let videoObject = videoObjects.randomElement(),
+                let videoURL = videoObject.convertToURL()   {
                 let player = AVPlayer(url: videoURL)
                 let playerLayer = AVPlayerLayer(player: player)
                 playerLayer.frame = view.bounds
@@ -107,7 +116,7 @@ extension MainFeedViewController: UICollectionViewDelegateFlowLayout    {
         
         let mediaObject = mediaObjects[indexPath.row]
         
-        guard let videoURL = mediaObject.videoURL else  {
+        guard let videoURL = mediaObject.videoData?.convertToURL() else  {
             return
         }
         let playerViewController = AVPlayerViewController()
@@ -147,13 +156,15 @@ extension MainFeedViewController: UIImagePickerControllerDelegate, UINavigationC
         switch mediaType    {
         case "public.image":
             if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage, let imageData = originalImage.jpegData(compressionQuality: 1.0)  {
-                let mediaObject = MediaObject(imageData: imageData, videoURL: nil, caption: nil)
+                let mediaObject = CoreDataManager.shared.create(imageData, videoURL: nil)
                 mediaObjects.append(mediaObject)
             }
         case "public.movie":
-            if let medieURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL    {
-                print(medieURL)
-                let mediaObject = MediaObject(imageData: nil, videoURL: medieURL, caption: nil)
+            if let mediaURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL,
+                let image = mediaURL.videoPreviewThumbnail(),
+                let imageData = image.jpegData(compressionQuality: 1.0){
+                print(mediaURL)
+                let mediaObject = CoreDataManager.shared.create(imageData, videoURL: mediaURL)
                 mediaObjects.append(mediaObject)
             }
         default:
